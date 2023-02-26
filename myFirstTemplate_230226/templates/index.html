@@ -1,0 +1,74 @@
+<!-- /templates/index.html -->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        歡迎來到我的部落格
+    </title>
+</head>
+<body>
+    <h1> 歡迎來到我的部落格 </h1>
+    <hr>
+	<ul>
+		<li>
+			<a href="http://127.0.0.1:80/admin">Admin</a>
+		</li>
+
+		<li>
+			<a href="http://127.0.0.1:80/about">About</a>
+		</li>
+		<li>
+			<a href="https://meet.google.com/qsf-yrth-omw">Meeting</a>
+		</li>
+		<li>
+			<a href="https://coggle.it/diagram/Y66YOfnDY3PfPvEZ/t/meeting">Coggle</a>
+		</li>
+    <li>
+      <a href="http://127.0.0.1:80/App2/ntab1">App2Ntab1</a>
+    </li>
+		<li>
+			<a href="http://127.0.0.1:80/App2/list">list</a>
+		</li>
+		<li>
+			<a href="http://127.0.0.1:80/App2/bootstrap">use_bootstrap</a>
+		</li>
+	</ul>
+	<ul>
+		<li>
+			ToDo:
+			<ul>
+				<li>
+					配置 neovim Fzflua session (如果有) 管理器
+				</li>
+				<li>
+					為了讓我能在任何資料夾 (專案) 都能還原我的窗口配置 (目前僅能還原最後一次開檔的窗口配置)
+				</li>
+				<li>
+					將部落格主頁切成 2 半
+				</li>
+				<li>
+					部落格主頁套用 markdown 渲染
+				</li>
+			</ul>
+		</li<a href="https://meet.google.com/qsf-yrth-omw">Meeting</a>
+	</ul>
+    {% for x in content_posts %}
+        <p style='font-family: 微軟正黑體;font-size:16pt;font-weight:bold;'>
+        {{x.title}}
+        </p>
+        <p style='font-family: 微軟正黑體;font-size:10pt;letter-spacing:1pt;'>
+        [此文章發佈於:{{x.pub_date}}]<br>   <!-- 課堂練習~ -->
+        <!--{{x.body}}-->
+        {{x.body|linebreaksbr}}
+        </p>
+        {% if x.pumps %}
+        <h4>class : {{x.pumps}}</h4>
+        {% endif %}
+    {% endfor %}
+
+
+    <hr>
+    <h3>現在時間:{{now}}</h3>
+</body>
+</html>
+

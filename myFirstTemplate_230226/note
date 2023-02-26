@@ -1,0 +1,59 @@
+
+# 安裝python & pip 並確認版本
+$python3 -V
+$sudo apt install python3-pip
+# 已安裝套件查詢
+$pip3 list
+
+#或直接查詢
+$ python -m django --version
+
+## 開啟虛擬環境
+$ sudo pip3 install virtualenvwrapper
+
+  # 加入 .bashrc
+  export WORKON_HOME=$HOME/.virtualenvs
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=' -p /usr/bin/python3 '
+  export PROJECT_HOME=$HOME/Devel
+  source /usr/local/bin/virtualenvwrapper.sh
+
+# refresh env 變數
+$source ~/.bashrc
+
+## 開啟虛擬套件管理系統
+mkvirtualenv  2022_12_set-up_env
+deactivate
+workon 2022_12_set-up_env
+
+#PIP 安裝 requirements.txt 的套件
+pip install -r requirements.txt
+## 產出專案需要的套件清單
+pip3 freeze > requirments.txt
+
+## 開專案
+django-admin startproject [專案名稱]
+## 開app
+python managy.py startapp [app名稱]
+##  model 建立 & 更新資料庫 sheama
+帳密 admin/s10016131
+python3 ./manage.py makemigrations [app名稱]
+python3 ./manage.py migrate
+
+### 開啟 web
+python3 manage.py runserver 127.0.0.1:8000
+##  port　被佔據要清掉
+sudo lsof -t -i tcp:8000 | xargs kill -9
+
+
+## 開啟管理後台
+python3 manage.py createsuperuser
+
+
+## django报错‘staticfiles‘ is not a registered tag library
+https://blog.csdn.net/weixin_35757704/article/details/113421562
+	在django3.x中这部分做了修改，下面是幾種寫法:
+        {% load staticfiles %}
+        { % load static from staticfiles %}
+         {% load admin_static %}
+==>   後來全部統一改 {% load static %}
